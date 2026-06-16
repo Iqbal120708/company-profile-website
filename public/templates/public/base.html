@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ site.seo_title }}</title>
+    <meta name="description" content="{{ site.seo_description }}">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="{{ site.seo_title }}">
+    <meta property="og:description" content="{{ site.seo_description }}">
+    <meta property="og:type" content="website">
+
+    {% if site.logo %}
+    <meta property="og:image" content="{{ site.logo.url }}">
+    {% endif %}
+    
+    {% if site.favicon %}
+    <link rel="icon" href="{{ site.favicon.url }}">
+    {% endif %}
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'public/css/main.css' %}">
+</head>
+
+<body>
+
+    {% include "public/partials/navbar.html" %}
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    {% include "public/partials/footer.html" %}
+
+</body>
+</html>

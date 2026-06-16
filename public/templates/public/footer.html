@@ -1,0 +1,28 @@
+<footer class="footer">
+    <div class="container-main footer-grid">
+
+        <div>
+            <h3>{{ site.company_name }}</h3>
+            <p>{{ site.tagline }}</p>
+        </div>
+
+        <div>
+            <h4>Kontak</h4>
+            <p>{{ site.address }}</p>
+            <p>{{ site.phone }}</p>
+            <p>{{ site.email }}</p>
+        </div>
+
+        <div>
+            <h4>Sosial</h4>
+            {% if site.instagram_url %}
+                <a href="{{ site.instagram_url }}">Instagram</a>
+            {% endif %}
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        © {% now "Y" %} {{ site.company_name }}
+    </div>
+</footer>
