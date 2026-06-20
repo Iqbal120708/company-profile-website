@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+
+{% block title %}Layanan Catering - {{ site.company_name }}{% endblock %}
+{% block description %}Layanan catering Dapur Nusantara Surabaya: nasi kotak, prasmanan, snack box, dan tumpeng untuk acara kantor, pernikahan, hingga syukuran. Pesan sekarang.{% endblock %}
+
+
+{% block content %}
+
+<!-- HERO -->
+
+<section class="py-5 bg-light">
+
+    <div class="container">
+
+        <div class="text-center">
+
+            <span class="section-badge">
+                Layanan Catering
+            </span>
+
+            <h1 class="display-5 fw-bold mt-3">
+                Layanan {{ site.company_name }}
+            </h1>
+
+            <p class="lead text-muted mx-auto" style="max-width: 700px;">
+                Solusi catering untuk acara keluarga, perusahaan, seminar,
+                pernikahan, gathering, dan berbagai kebutuhan konsumsi lainnya.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- SERVICES -->
+
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <h2 class="section-title">
+                Pilihan Layanan Kami
+            </h2>
+
+            <p class="text-muted">
+                Berbagai layanan catering yang dapat disesuaikan dengan kebutuhan acara Anda.
+            </p>
+
+        </div>
+
+        <div class="row g-4">
+
+            {% for service in services %}
+
+                <div class="col-md-6 col-lg-4">
+
+                    <article class="service-card h-100">
+
+                        {% if service.image %}
+                            <img
+                                src="{{ service.image.url }}"
+                                alt="{{ service.image_alt|default:service.title }}"
+                                class="service-card-image"
+                                loading="lazy"
+                            >
+                        {% endif %}
+
+                        <div class="service-card-body">
+
+                            <h3 class="service-card-title">
+                                {{ service.title }}
+                            </32>
+
+                            <p class="service-card-description py-3">
+                                {{ service.short_description }}
+                            </p>
+
+                            <div class="service-card-description text-muted">
+                                {{ service.description|truncatewords:25 }}
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            {% empty %}
+
+                <div class="col-12 text-center">
+
+                    <p class="text-muted mb-0">
+                        Belum ada layanan yang tersedia.
+                    </p>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ABOUT CTA -->
+
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="about-link-card text-center">
+
+            <h2 class="mb-3">
+                Kenali Lebih Dekat {{ site.company_name }}
+            </h2>
+
+            <p class="text-muted mx-auto mb-4" style="max-width: 700px;">
+                Pelajari profil perusahaan, visi, misi, dan komitmen kami
+                dalam memberikan layanan catering berkualitas untuk setiap acara.
+            </p>
+
+            <a
+                href="{% url 'about' %}"
+                class="btn-secondary-custom"
+            >
+                Tentang Kami
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% include 'includes/cta_section.html' %}
+
+{% endblock %}

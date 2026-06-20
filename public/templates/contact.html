@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+
+{% block title %}Hubungi Kami - {{ site.company_name }}{% endblock %}
+{% block description %}Hubungi {{ site.company_name }} di {{ site.full_address }} untuk konsultasi catering nasi kotak, prasmanan, dan tumpeng. Respon cepat via WhatsApp.{% endblock %}
+
+{% block content %}
+
+<!-- HERO -->
+
+<section class="py-5 bg-light">
+
+    <div class="container">
+
+        <div class="text-center">
+
+            <span class="section-badge">
+                Hubungi Kami
+            </span>
+
+            <h1 class="display-5 fw-bold mt-3">
+                Konsultasikan Kebutuhan Catering Anda
+            </h1>
+
+            <p class="lead text-muted mx-auto" style="max-width: 700px;">
+                Tim kami siap membantu kebutuhan catering untuk acara keluarga,
+                pernikahan, perusahaan, seminar, maupun acara spesial lainnya.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CONTACT INFO -->
+
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="row g-4 justify-content-center">
+
+            <div class="{% if site.latitude and site.longitude %}col-lg-6{% else %}col-lg-8 col-xl-7{% endif %}">
+
+                <div class="contact-card h-100">
+
+                    <h2 class="section-title mb-4">
+                        Informasi Kontak
+                    </h2>
+
+                    <div class="contact-item">
+
+                        <span>Alamat</span>
+
+                        <p>
+                            {{ site.full_address }}
+                        </p>
+
+                    </div>
+
+                    <div class="contact-item">
+
+                        <span>WhatsApp</span>
+
+                        <p>
+                            {{ site.whatsapp_number }}
+                        </p>
+
+                    </div>
+
+                    <div class="contact-item">
+
+                        <span>Email</span>
+
+                        <p>
+                            {{ site.email }}
+                        </p>
+
+                    </div>
+
+                    {% if site.operating_hours_display %}
+                    <div class="contact-item">
+
+                        <span>Jam Operasional</span>
+
+                        <p>
+                            {{ site.operating_hours_display }}
+                        </p>
+
+                    </div>
+                    {% endif %}
+
+                    <a
+                        href="{{ site.whatsapp_link }}"
+                        class="btn-whatsapp mt-3"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        Konsultasi via WhatsApp
+                    </a>
+
+                </div>
+
+            </div>
+
+            {% if site.latitude and site.longitude %}
+
+            <div class="col-lg-6">
+        
+                <div class="contact-card h-100">
+        
+                    <h2 class="section-title mb-4">
+                        Lokasi Kami
+                    </h2>
+        
+                    <div class="ratio ratio-4x3">
+        
+                        <iframe
+                            src="https://www.google.com/maps?q={{ site.latitude }},{{ site.longitude }}&output=embed"
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            allowfullscreen
+                        ></iframe>
+        
+                    </div>
+        
+                </div>
+        
+            </div>
+        
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</section>
+
+{% include 'includes/cta_section.html' %}
+
+{% endblock %}
