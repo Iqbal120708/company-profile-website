@@ -1,0 +1,72 @@
+<section id="services" class="py-5">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <span class="section-badge">
+                Layanan Kami
+            </span>
+
+            <h2 class="section-title">
+                Solusi Catering untuk Berbagai Acara
+            </h2>
+
+            <p class="section-description">
+                Kami menyediakan layanan catering profesional untuk kebutuhan
+                perusahaan, pernikahan, acara keluarga, dan berbagai event lainnya.
+            </p>
+
+        </div>
+
+        <div class="row g-4 justify-content-md-center">
+
+            {% for service in services %}
+
+            <div class="col-md-10 col-lg-4">
+
+                <article class="service-card h-100">
+
+                    {% if service.image %}
+                    <img
+                        src="{{ service.image.url }}"
+                        alt="{{ service.image_alt|default:service.title }}"
+                        class="service-card-image"
+                        loading="lazy"
+                    >
+                    {% endif %}
+
+                    <div class="service-content">
+
+                        <h3 class="service-title">
+                            {{ service.title }}
+                        </h3>
+
+                        <p class="service-description">
+                            {{ service.short_description }}
+                        </p>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+        <div class="text-center mt-5">
+
+            <a
+                href="{% url 'services' %}"
+                class="btn-primary-custom"
+            >
+                Lihat Semua Layanan
+            </a>
+
+        </div>
+
+    </div>
+
+</section>

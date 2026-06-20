@@ -1,0 +1,71 @@
+<section id="faq" class="py-5">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <span class="section-badge">
+                FAQ
+            </span>
+
+            <h2 class="section-title">
+                Pertanyaan yang Sering Diajukan
+            </h2>
+
+            <p class="section-description">
+                Temukan jawaban untuk pertanyaan yang paling sering ditanyakan
+                mengenai layanan catering kami.
+            </p>
+
+        </div>
+
+        {% if faqs %}
+
+            <div class="faq-wrapper">
+
+                <div class="accordion" id="faqAccordion">
+
+                    {% for faq in faqs %}
+
+                    <div class="accordion-item">
+
+                        <h3 class="accordion-header">
+
+                            <button
+                                class="accordion-button {% if not forloop.first %}collapsed{% endif %}"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#faq{{ faq.id }}"
+                                aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}"
+                                aria-controls="faq{{ faq.id }}"
+                            >
+                                {{ faq.question }}
+                            </button>
+
+                        </h3>
+
+                        <div
+                            id="faq{{ faq.id }}"
+                            class="accordion-collapse collapse {% if forloop.first %}show{% endif %}"
+                            data-bs-parent="#faqAccordion"
+                        >
+
+                            <div class="accordion-body">
+                                {{ faq.answer|linebreaks }}
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</section>

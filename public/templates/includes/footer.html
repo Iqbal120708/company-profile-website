@@ -1,0 +1,71 @@
+<footer class="bg-dark text-light pt-5 pb-4">
+    <div class="container">
+
+        <div class="row g-4">
+
+            <!-- BRAND -->
+            <div class="col-md-4">
+                <h4 class="fw-bold mb-3">
+                    {{ site.company_name }}
+                </h4>
+                <p class="mb-0 text-light opacity-75">
+                    {{ site.tagline }}
+                </p>
+            </div>
+
+            <!-- KONTAK -->
+            <div class="col-md-4">
+                <h5 class="fw-semibold mb-3">Kontak</h5>
+                <p class="mb-2 opacity-75">{{ site.full_address }}</p>
+                <a href="tel:{{ site.phone }}"
+                   class="d-block text-light text-decoration-none mb-1 opacity-75">
+                    {{ site.phone }}
+                </a>
+                <a href="mailto:{{ site.email }}"
+                   class="d-block text-light text-decoration-none opacity-75">
+                    {{ site.email }}
+                </a>
+            </div>
+
+            <!-- SOSIAL -->
+            <div class="col-md-4">
+                <h5 class="fw-semibold mb-3">Sosial Media</h5>
+                <div class="d-flex flex-column gap-2">
+
+                    {% if site.instagram_url %}
+                    <a href="{{ site.instagram_url }}"
+                       target="_blank"
+                       class="footer-social-link">
+                        Instagram
+                    </a>
+                    {% endif %}
+
+                    {% if site.facebook_url %}
+                    <a href="{{ site.facebook_url }}"
+                       target="_blank"
+                       class="footer-social-link">
+                        Facebook
+                    </a>
+                    {% endif %}
+
+                    {% if site.tiktok_url %}
+                    <a href="{{ site.tiktok_url }}"
+                       target="_blank"
+                       class="footer-social-link">
+                        TikTok
+                    </a>
+                    {% endif %}
+
+                </div>
+            </div>
+
+        </div>
+
+        <hr class="border-secondary my-4">
+
+        <p class="text-center mb-0 opacity-75" style="font-size: 14px;">
+            © {% now "Y" %} {{ site.company_name }}. All Rights Reserved.
+        </p>
+
+    </div>
+</footer>

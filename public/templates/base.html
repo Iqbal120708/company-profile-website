@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}{{ site.seo_title }}{% endblock %}</title>
+    <meta name="description" content="{% block description %}{{ site.seo_description }}{% endblock %}">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://{{ request.get_host }}{{ request.path }}">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="{% block og_title %}{{ site.seo_title }}{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}{{ site.seo_description }}{% endblock %}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://{{ request.get_host }}{{ request.path }}">
+    <meta property="og:site_name" content="{{ site.company_name }}">
+    <meta property="og:locale" content="id_ID">
+
+    {% if site.logo %}
+    <meta property="og:image" content="https://{{ request.get_host }}{{ site.logo.url }}">
+    <meta property="og:image:alt" content="{{ site.company_name }}">
+    {% endif %}
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{% block twitter_title %}{{ site.seo_title }}{% endblock %}">
+    <meta name="twitter:description" content="{% block twitter_description %}{{ site.seo_description }}{% endblock %}">
+    {% if site.logo %}
+    <meta name="twitter:image" content="https://{{ request.get_host }}{{ site.logo.url }}">
+    {% endif %}
+
+    {% if site.favicon %}
+    <link rel="icon" href="{{ site.favicon.url }}">
+    {% endif %}
+
+    <!-- Preconnect untuk mempercepat load Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'public/css/main.css' %}">
+
+    <!-- Schema.org LocalBusiness -->
+    {% if site %}
+    {{ site.to_local_business_schema|json_script:"schema-local-business" }}
+    <script>
+        (function () {
+            var data = JSON.parse(document.getElementById('schema-local-business').textContent);
+            var script = document.createElement('script');
+            script.type = 'application/ld+json';
+            script.textContent = JSON.stringify(data);
+            document.head.appendChild(script);
+        })();
+    </script>
+    {% endif %}
+
+    {% block extra_head %}{% endblock %}
+</head>
+
+<body>
+
+    {% include "includes/navbar.html" %}
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    {% include "includes/footer.html" %}
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,88 @@
+<section id="gallery" class="py-5 bg-white">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <span class="section-badge">
+                Galeri Kami
+            </span>
+
+            <h2 class="section-title">
+                Dokumentasi Catering Terbaik Kami
+            </h2>
+
+            <p class="section-description">
+                Beberapa dokumentasi layanan catering yang telah kami kerjakan
+                untuk berbagai acara dan kebutuhan pelanggan.
+            </p>
+
+        </div>
+
+        {% if galleries %}
+
+            <div class="row g-4">
+
+                {% for item in galleries %}
+
+                <div class="col-6 col-lg-4">
+
+                    <figure class="gallery-card h-100">
+
+                        <img
+                            src="{{ item.image.url }}"
+                            alt="{{ item.image_alt|default:item.title }}"
+                            class="gallery-image"
+                            loading="lazy"
+                        >
+
+                        <figcaption class="gallery-content">
+
+                            <h3 class="gallery-title">
+                                {{ item.title }}
+                            </h3>
+
+                            {% if item.description %}
+                            <p class="gallery-description">
+                                {{ item.description|truncatechars:80 }}
+                            </p>
+                            {% endif %}
+
+                        </figcaption>
+
+                    </figure>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+            
+            {% comment %}
+            <div class="text-center mt-5">
+
+                <a
+                    href="{% url 'gallery' %}"
+                    class="btn-secondary-custom"
+                >
+                    Lihat Semua Galeri
+                </a>
+
+            </div>
+            {% endcomment %}
+
+        {% else %}
+
+            <div class="text-center py-5">
+
+                <p class="text-muted mb-0">
+                    Galeri akan segera tersedia.
+                </p>
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</section>

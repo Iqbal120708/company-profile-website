@@ -1,0 +1,59 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top py-3">
+    <div class="container">
+
+        <!-- Brand -->
+        <a class="navbar-brand fw-bold d-flex align-items-center" href="{% url 'home' %}">
+            {% if site.logo %}
+                <img src="{{ site.logo.url }}"
+                     alt="{{ site.company_name }}"
+                     width="42"
+                     height="42"
+                     class="me-2 rounded-circle">
+            {% endif %}
+            <span>{{ site.company_name }}</span>
+        </a>
+
+        <!-- Toggle -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Menu -->
+        <div class="collapse navbar-collapse d-lg-flex justify-content-lg-end align-items-lg-center" id="navbarMain">
+
+            <ul class="navbar-nav flex-column flex-lg-row text-center">
+            
+                <li class="nav-item">
+                    <a class="nav-link py-2 px-lg-3" href="{% url 'home' %}">Home</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link py-2 px-lg-3" href="{% url 'services' %}">Layanan</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link py-2 px-lg-3" href="{% url 'home' %}#gallery">Galeri</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link py-2 px-lg-3" href="{% url 'about' %}">Tentang</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link py-2 px-lg-3" href="{% url 'contact' %}">Kontak</a>
+                </li>
+            
+            </ul>
+            <!-- CTA -->
+            {% if site.whatsapp_link %}
+            <div class="d-flex justify-content-center justify-content-lg-end mt-3 mt-lg-0 ms-lg-3">
+                <a href="{{ site.whatsapp_link }}"
+                   class="btn-navbar-cta">
+                    Pesan Sekarang
+                </a>
+            </div>
+            {% endif %}
+
+        </div>
+    </div>
+</nav>

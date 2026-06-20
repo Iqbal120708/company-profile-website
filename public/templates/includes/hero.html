@@ -1,0 +1,51 @@
+<section class="hero-section">
+    <div class="container p-lg-3">
+
+        <div class="row align-items-center justify-content-md-center g-5 min-vh-75">
+
+            <!-- TEXT -->
+            <div class="col-lg-6 col-md-10 d-flex align-items-center">
+                <div class="w-100">
+
+                    <span class="hero-badge">
+                        Catering Profesional & Terpercaya
+                    </span>
+
+                    <h1 class="fw-bold display-5 mb-3">
+                        {{ hero.title }}
+                    </h1>
+
+                    <p class="lead mb-4 opacity-75">
+                        {{ hero.subtitle }}
+                    </p>
+                    
+                    <div class="gap-2 d-flex justify-content-sm-start">
+                    
+                        <a href="{% url 'about' %}"
+                           class="btn-primary-custom w-100 w-sm-auto">
+                            Selengkapnya
+                        </a>
+                    
+                        <a href="{% url 'services' %}"
+                           class="btn-secondary-custom w-100 w-sm-auto">
+                            Lihat Layanan
+                        </a>
+                    
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- IMAGE -->
+            <div class="col-lg-6 col-md-10 text-center">
+                {% if hero.image %}
+                <img src="{{ hero.image.url }}"
+                     alt="{{ hero.image_alt|default:site.company_name }}"
+                     class="img-fluid rounded-4 shadow hero-image">
+                {% endif %}
+            </div>
+
+        </div>
+
+    </div>
+</section>
