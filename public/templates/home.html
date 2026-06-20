@@ -1,5 +1,20 @@
 {% extends 'base.html' %}
 
+{% block extra_head %}
+{% if faqs %}
+{{ faq_schema|json_script:"schema-faq" }}
+<script>
+    (function () {
+        var data = JSON.parse(document.getElementById('schema-faq').textContent);
+        var script = document.createElement('script');
+        script.type = 'application/ld+json';
+        script.textContent = JSON.stringify(data);
+        document.head.appendChild(script);
+    })();
+</script>
+{% endif %}
+{% endblock %}
+
 {% block content %}
 
     {% include 'includes/hero.html' %}

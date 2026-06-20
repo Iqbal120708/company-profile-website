@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.utils.html import strip_tags
 
 from .models import (
     HeroBanner,
@@ -25,12 +26,29 @@ def home(request):
     faqs = FAQ.objects.filter(
         is_active=True
     )
-
+    
+    faq_schema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": faq.question,
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": strip_tags(faq.answer),
+                },
+            }
+            for faq in faqs
+        ],
+    }
+    
     context = {
         "hero": hero,
         "services": services,
         "galleries": galleries,
-        "faqs": faqs
+        "faqs": faqs,
+        "faq_schema": faq_schema
     }
 
     return render(
