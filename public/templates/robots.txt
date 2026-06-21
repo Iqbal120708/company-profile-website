@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: /admin/
 
-Sitemap: https://companyprofile.iqbalweb.my.id/sitemap.xml
+Sitemap: https://companyprofile.iqbaljdev.my.id/sitemap.xml
