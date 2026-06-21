@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}Halaman Tidak Ditemukan - {{ site.company_name }}{% endblock %}
+{% block description %}Halaman yang Anda cari tidak ditemukan. Kembali ke halaman utama {{ site.company_name }}.{% endblock %}
+
+{% block extra_head %}
+<meta name="robots" content="noindex">
+{% endblock %}
+
+{% block content %}
+
+<section class="py-5">
+
+    <div class="container text-center">
+
+        <span class="section-badge">
+            404
+        </span>
+
+        <h1 class="display-5 fw-bold mt-3">
+            Halaman Tidak Ditemukan
+        </h1>
+
+        <p class="lead text-muted mx-auto mb-4" style="max-width: 600px;">
+            Maaf, halaman yang Anda cari tidak tersedia atau sudah dipindahkan.
+            Silakan kembali ke halaman utama atau lihat layanan kami.
+        </p>
+
+        <div class="d-flex gap-2 justify-content-center flex-wrap">
+
+            <a href="{% url 'home' %}" class="btn-primary-custom">
+                Kembali ke Beranda
+            </a>
+
+            <a href="{% url 'services' %}" class="btn-secondary-custom">
+                Lihat Layanan
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
