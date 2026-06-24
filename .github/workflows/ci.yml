@@ -16,6 +16,7 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             source ${{ secrets.PATH_ENV }} && cd ${{ secrets.PATH_PROJECT }}
+            cd company-profile-website
             git fetch origin main
             git reset --hard origin/main
             source venv/bin/activate
