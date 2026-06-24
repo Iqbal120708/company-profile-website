@@ -1,0 +1,23 @@
+name: Django CI
+
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@v0.1.5
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          script: |
+            source ${{ secrets.PATH_ENV }} && cd ${{ secrets.PATH_PROJECT }}
+            git fetch origin main
+            git reset --hard origin/main
+            source venv/bin/activate
+            pip install -r requirements.txt
+            python3.13 manage.py migrate
+            python3.13 manage.py collectstatic --noinput
