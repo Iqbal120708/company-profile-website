@@ -145,7 +145,7 @@ STORAGES = {
 }
 
 MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_ROOT = BASE_DIR.parent.parent / 'public_html' / 'companyprofile.iqbaljdev.my.id' / 'media'
 
 
 LOGGING = {
