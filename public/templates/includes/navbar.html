@@ -2,22 +2,25 @@
     <div class="container">
 
         <!-- Brand -->
-        <a class="navbar-brand fw-bold d-flex align-items-center" href="{% url 'home' %}">
+        <a class="navbar-brand fw-bold d-flex align-items-center text-truncate"
+           href="{% url 'home' %}" style="max-width: 78%;">
             {% if site.logo %}
                 <img src="{{ site.logo.url }}"
-                     alt="{{ site.company_name }}"
-                     width="42"
-                     height="42"
-                     class="me-2 rounded-circle">
+                     alt=""
+                     width="36"
+                     height="36"
+                     class="me-2 rounded-circle flex-shrink-0">
             {% endif %}
-            <span>{{ site.company_name }}</span>
+            <span class="text-truncate">{{ site.company_name }}</span>
         </a>
-
+        
         <!-- Toggle -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+        <button class="navbar-toggler flex-shrink-0" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarMain" aria-label="Buka menu navigasi"
+                aria-controls="navbarMain" aria-expanded="false">
             <span class="navbar-toggler-icon"></span>
         </button>
-
+        
         <!-- Menu -->
         <div class="collapse navbar-collapse d-lg-flex justify-content-lg-end align-items-lg-center" id="navbarMain">
 

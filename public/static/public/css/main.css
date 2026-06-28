@@ -191,8 +191,8 @@ img {
     display: inline-block;
     padding: 8px 18px;
     border-radius: 999px;
-    background: rgba(232, 168, 56, 0.15);
-    color: var(--accent);
+    background: var(--accent);   /* #E8A838, solid — bukan rgba */
+    color: #1C1C1C;               /* teks gelap, bukan amber */
     font-size: .9rem;
     font-weight: 600;
     margin-top: 20px;
@@ -280,13 +280,14 @@ footer a:hover {
 
 .section-badge {
     display: inline-block;
-    background: rgba(46, 125, 94, 0.1);
-    color: var(--secondary);
+    background: #FFFFFF;          /* solid putih, bukan rgba hijau */
+    color: var(--secondary);      /* #2E7D5E tetap, sekarang lolos (4.99:1) */
     font-size: 14px;
     font-weight: 600;
     padding: 8px 16px;
     border-radius: 999px;
     margin-bottom: 16px;
+    border: 1px solid rgba(46, 125, 94, 0.25); /* opsional, kasih outline halus */
 }
 
 .section-title {

@@ -37,9 +37,13 @@
     <link rel="icon" href="{{ site.favicon.url }}">
     {% endif %}
 
-    <!-- Preconnect untuk mempercepat load Google Fonts -->
+    <!-- Preconnect untuk mempercepat koneksi ke domain eksternal -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+    <!-- Preload CSS lokal agar mulai diunduh lebih awal, paralel dengan Bootstrap -->
+    <link rel="preload" as="style" href="{% static 'public/css/main.css' %}">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -62,6 +66,10 @@
             document.head.appendChild(script);
         })();
     </script>
+    {% endif %}
+    
+    {% if hero.image %}
+    <link rel="preload" as="image" href="{{ hero.image.url }}" fetchpriority="high">
     {% endif %}
 
     {% block extra_head %}{% endblock %}
