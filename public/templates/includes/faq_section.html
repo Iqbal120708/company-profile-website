@@ -8,11 +8,11 @@
                 FAQ
             </span>
 
-            <h2 class="section-title">
+            <h2 class="section-title reveal">
                 Pertanyaan yang Sering Diajukan
             </h2>
 
-            <p class="section-description">
+            <p class="section-description reveal" style="transition-delay: 0.08s">
                 Temukan jawaban untuk pertanyaan yang paling sering ditanyakan
                 mengenai layanan catering kami.
             </p>
@@ -27,7 +27,7 @@
 
                     {% for faq in faqs %}
 
-                    <div class="accordion-item">
+                    <div class="accordion-item reveal" style="transition-delay: calc(0.1s + {{ forloop.counter0 }} * 0.05s)">
 
                         <h3 class="accordion-header">
 

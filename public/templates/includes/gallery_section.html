@@ -8,11 +8,11 @@
                 Galeri Kami
             </span>
 
-            <h2 class="section-title">
+            <h2 class="section-title reveal">
                 Dokumentasi Catering Terbaik Kami
             </h2>
 
-            <p class="section-description">
+            <p class="section-description reveal" style="transition-delay: 0.08s">
                 Beberapa dokumentasi layanan catering yang telah kami kerjakan
                 untuk berbagai acara dan kebutuhan pelanggan.
             </p>
@@ -22,40 +22,53 @@
         {% if galleries %}
 
             <div class="row g-4">
-
+            
                 {% for item in galleries %}
-
-                <div class="col-6 col-lg-4">
-
-                    <figure class="gallery-card h-100">
-
-                        <img
-                            src="{{ item.image.url }}"
-                            alt="{{ item.image_alt|default:item.title }}"
-                            class="gallery-image"
-                            loading="lazy"
-                        >
-
-                        <figcaption class="gallery-content">
-
-                            <h3 class="gallery-title">
-                                {{ item.title }}
-                            </h3>
-
-                            {% if item.description %}
-                            <p class="gallery-description">
-                                {{ item.description|truncatechars:80 }}
-                            </p>
-                            {% endif %}
-
-                        </figcaption>
-
-                    </figure>
-
-                </div>
-
+                {% if forloop.counter <= 2 %}
+                    {% with delay="0.01s" %}
+                    <div class="col-6 col-lg-4">
+                        <figure class="gallery-card h-100 reveal" style="transition-delay: {{ delay }}">
+                            <img src="{{ item.image.url }}" alt="{{ item.image_alt|default:item.title }}" class="gallery-image" loading="lazy">
+                            <figcaption class="gallery-content">
+                                <h3 class="gallery-title">{{ item.title }}</h3>
+                                {% if item.description %}
+                                <p class="gallery-description">{{ item.description|truncatechars:80 }}</p>
+                                {% endif %}
+                            </figcaption>
+                        </figure>
+                    </div>
+                    {% endwith %}
+                {% elif forloop.counter <= 4 %}
+                    {% with delay="0.02s" %}
+                    <div class="col-6 col-lg-4">
+                        <figure class="gallery-card h-100 reveal" style="transition-delay: {{ delay }}">
+                            <img src="{{ item.image.url }}" alt="{{ item.image_alt|default:item.title }}" class="gallery-image" loading="lazy">
+                            <figcaption class="gallery-content">
+                                <h3 class="gallery-title">{{ item.title }}</h3>
+                                {% if item.description %}
+                                <p class="gallery-description">{{ item.description|truncatechars:80 }}</p>
+                                {% endif %}
+                            </figcaption>
+                        </figure>
+                    </div>
+                    {% endwith %}
+                {% else %}
+                    {% with delay="0.03s" %}
+                    <div class="col-6 col-lg-4">
+                        <figure class="gallery-card h-100 reveal" style="transition-delay: {{ delay }}">
+                            <img src="{{ item.image.url }}" alt="{{ item.image_alt|default:item.title }}" class="gallery-image" loading="lazy">
+                            <figcaption class="gallery-content">
+                                <h3 class="gallery-title">{{ item.title }}</h3>
+                                {% if item.description %}
+                                <p class="gallery-description">{{ item.description|truncatechars:80 }}</p>
+                                {% endif %}
+                            </figcaption>
+                        </figure>
+                    </div>
+                    {% endwith %}
+                {% endif %}
                 {% endfor %}
-
+            
             </div>
             
             {% comment %}

@@ -238,6 +238,38 @@ img {
     box-shadow: 0 20px 50px rgba(0, 0, 0, .12);
 }
 
+.hero-section h1,
+.hero-section p,
+.hero-section .hero-buttons,
+.hero-section img {
+  opacity: 0;
+  transform: translateY(16px);
+  animation: heroFadeUp 0.6s ease forwards;
+}
+
+.hero-section h1 { animation-delay: 0.1s; }
+.hero-section p { animation-delay: 0.2s; }
+.hero-section .hero-buttons { animation-delay: 0.3s; }
+.hero-section img { animation-delay: 0.4s; }
+
+@keyframes heroFadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-section h1,
+  .hero-section p,
+  .hero-section .hero-buttons,
+  .hero-section img {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
 /* FOOTER */
 .footer-social-link {
     color: rgba(255,255,255,0.7);
@@ -608,3 +640,22 @@ footer a:hover {
     }
 }
 
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
